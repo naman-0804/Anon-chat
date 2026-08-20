@@ -1,11 +1,14 @@
 const express = require("express");
 const path = require('path')
+const http = require('http')
 const app = express()
 const PORT = process.env.PORT || 4000
-const server = app.listen(PORT, () => console.log(`Server on port ${PORT}`))
+
+// Static files FIRST
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Socket.IO
+// Create server and attach Socket.IO BEFORE listening
+const server = http.createServer(app)
 const io = require('socket.io')(server)
 
 io.on('connection', (socket) => {
@@ -21,3 +24,6 @@ io.on('connection', (socket) => {
     io.emit('user count', io.engine.clientsCount)
   })
 })
+
+// Listen LAST
+server.listen(PORT, () => console.log(`Server on port ${PORT}`))
