@@ -24,3 +24,7 @@ socket.on('chat message', (msg) => {
     messages.appendChild(li)
     messages.scrollTop = messages.scrollHeight
 })
+
+socket.on('user count', (count) => {
+    document.getElementById('online-count').textContent = count + ' online'
+})

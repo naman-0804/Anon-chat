@@ -63,6 +63,18 @@ header .dot {
     animation: pulse 2s ease-in-out infinite;
 }
 
+#online-count {
+    position: absolute;
+    right: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
 @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }

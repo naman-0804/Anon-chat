@@ -10,6 +10,7 @@ const io = require('socket.io')(server)
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id)
+  io.emit('user count', io.engine.clientsCount)
 
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg)
@@ -17,5 +18,6 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id)
+    io.emit('user count', io.engine.clientsCount)
   })
 })
